@@ -1,8 +1,12 @@
+
 import 'package:expense_tracker/base/style/text_styles.dart';
+import 'package:expense_tracker/hoc/home_layout.dart';
 import 'package:expense_tracker/screen/auth/login_screen.dart';
 import 'package:expense_tracker/screen/landing/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+
+import '../plugins/local_shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,12 +22,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> checkIfUserIsLoggedIn() async{
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final token = await prefs.getString('_TOKEN');
-    print('inside method');
-    print(token);
+    // final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final token = await getTokenFromLocalStorage();
     if(token != ''){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>HomeScreen()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>HomeLayout()));
     }else{
       Navigator.of(context).push(MaterialPageRoute(builder: (_)=>LoginScreen()));
       }
