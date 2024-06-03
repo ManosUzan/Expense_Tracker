@@ -14,11 +14,9 @@ class _addtransactionState extends State<addtransaction> {
     final List<String> items = ['Account', 'Option 2', 'Option 3'];
     String? selectedValue = items[0];
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Add Transaction"),
-      ),
-      body: Container(
+    return 
+     
+       Container(
         padding: EdgeInsets.all(8),
         child: Column(
           children: [
@@ -255,7 +253,7 @@ class _addtransactionState extends State<addtransaction> {
             )
           ],
         ),
-      ),
-    );
+      );
+    
   }
 }

@@ -55,12 +55,7 @@ class _addaccountState extends State<addaccount> {
     final List<String> items = ['Account Type', 'Option 2', 'Option 3'];
     String? selectedValue = items[0];
 
-    return Scaffold(
-        appBar: AppBar(
-          
-          title: Text("Add Account"),
-        ),
-        body: Container(
+    return  Container(
           margin: EdgeInsets.only(top: 8),
           child: Column(
             children: [
@@ -196,6 +191,6 @@ class _addaccountState extends State<addaccount> {
               )
             ],
           ),
-        ));
+        );
   }
 }

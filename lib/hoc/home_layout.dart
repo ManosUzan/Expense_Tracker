@@ -15,54 +15,22 @@ class HomeLayout extends StatefulWidget {
 class _HomeLayoutState extends State<HomeLayout> {
   int _selectedIndex = 0;
 
-  List<String> titles = ['Home', 'Account'];
+  List<String> titles = ['Home', 'Account', 'Add Transaction'];
   List<Widget> screens = [
     HomeScreen(),
     // addaccount(),
-    // addtransaction(),
+    
     AccountScreen(),
+    addtransaction(),
 
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    
       appBar: AppBar(
-        title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Logo on the left side
-              Image.asset(
-                'assets/images/logo.png',
-                height: 40, // Adjust the height according to your logo size
-              ),
-              // Search bar and icons on the right side
-              Row(
-                children: [
-                  // Search bar
-                  // Text(titles[_selectedIndex]),
-                  Container(
-                    width: 24, // Adjust the width according to your design
-                    child: TextField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                        suffixIcon: Icon(Icons.search),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 15),
-                  CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/face.jpeg'),
-                    radius: 20, // Adjust the radius according to your design
-                  ),
-                ],
-              ),
-            ],
-          ),
-          backgroundColor: Colors.white, // Adjust the background color as needed
-      //   ),
-      // appBar: AppBar(
-      //   title: Text(titles[_selectedIndex]),
+        title: Text(titles[_selectedIndex]),
       ),
       body: SingleChildScrollView(
         child: screens[_selectedIndex],
@@ -78,8 +46,9 @@ class _HomeLayoutState extends State<HomeLayout> {
         showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
-          // BottomNavigationBarItem(icon: Icon(Icons.add),label: 'Accounts'),
+          // BottomNavigationBarItem(icon: Icon(Icons.account_balance),label: 'Add Accounts'),
           BottomNavigationBarItem(icon: Icon(Icons.star),label: 'Accounts'),
+          BottomNavigationBarItem(icon: Icon(Icons.add),label: 'Add Transaction'),
           //  BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
           // BottomNavigationBarItem(icon: Icon(Icons.star),label: 'Accounts'),
           //  BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
