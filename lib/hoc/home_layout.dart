@@ -1,5 +1,7 @@
 
 import 'package:expense_tracker/screen/account/account_screen.dart';
+import 'package:expense_tracker/screen/account/add_account.dart';
+import 'package:expense_tracker/screen/account/add_transaction.dart';
 import 'package:expense_tracker/screen/landing/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +18,8 @@ class _HomeLayoutState extends State<HomeLayout> {
   List<String> titles = ['Home', 'Account'];
   List<Widget> screens = [
     HomeScreen(),
+    // addaccount(),
+    // addtransaction(),
     AccountScreen(),
 
   ];
@@ -74,10 +78,11 @@ class _HomeLayoutState extends State<HomeLayout> {
         showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
+          // BottomNavigationBarItem(icon: Icon(Icons.add),label: 'Accounts'),
           BottomNavigationBarItem(icon: Icon(Icons.star),label: 'Accounts'),
-           BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.star),label: 'Accounts'),
-           BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
+          //  BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
+          // BottomNavigationBarItem(icon: Icon(Icons.star),label: 'Accounts'),
+          //  BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
         
         ],
       ),

@@ -33,12 +33,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: addtransaction(),
-      // home:SplashScreen(),
+      home:SplashScreen(),
       // home: HomeScreen()
       //  home:  addtransaction (),
       //  home: addaccount(),
       // home: transation(),
-      home: profile(),
+      // home: profile(),
       
 
 

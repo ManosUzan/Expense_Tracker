@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class addtransaction extends StatelessWidget {
+class addtransaction extends StatefulWidget {
   const addtransaction({super.key});
 
+  @override
+  State<addtransaction> createState() => _addtransactionState();
+}
+
+class _addtransactionState extends State<addtransaction> {
   @override
   Widget build(BuildContext context) {
     final List<String> items = ['Account', 'Option 2', 'Option 3'];
@@ -92,29 +97,29 @@ class addtransaction extends StatelessWidget {
               ),
             ),
             Container(
-              height: 50,
-              margin: EdgeInsets.only(bottom: 16, left: 18, right: 18),
-              width: double.infinity,
-              padding: EdgeInsets.only(left: 24),
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 225, 223, 223),
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton(
-                  value: selectedValue,
-                  isExpanded: true, // Fill the container's width
-                  items: items.map((String item) {
-                    return DropdownMenuItem<String>(
-                      value: item,
-                      child: Text(item),
-                    );
-                  }).toList(),
-                  onChanged: (String? value) {},
+                height: 50,
+                margin: EdgeInsets.only(bottom: 16, left: 18, right: 18),
+                width: double.infinity,
+                padding: EdgeInsets.only(left: 24),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 225, 223, 223),
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton(
+                    value: selectedValue,
+                    isExpanded: true, // Fill the container's width
+                    items: items.map((String item) {
+                      return DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(item),
+                      );
+                    }).toList(),
+                    onChanged: (String? value) {},
+                  ),
                 ),
               ),
-            ),
             Container(
               width: double.infinity,
               decoration: ShapeDecoration(

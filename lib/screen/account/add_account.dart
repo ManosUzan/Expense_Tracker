@@ -1,7 +1,54 @@
+import 'package:expense_tracker/data/model/account/account_model.dart';
+import 'package:expense_tracker/data/model/account/account_repo.dart';
 import 'package:flutter/material.dart';
 
-class addaccount extends StatelessWidget {
+class addaccount extends StatefulWidget {
   const addaccount({super.key});
+
+  @override
+  State<addaccount> createState() => _addaccountState();
+}
+
+class _addaccountState extends State<addaccount> {
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _openingBalanceController = TextEditingController();
+  String? _selectedAccountType;
+
+  Future<void> _addAccount() async {
+    final String title = _titleController.text;
+    final String? acctype = _selectedAccountType;
+    final num openingBalance = num.tryParse(_openingBalanceController.text) ?? 0;
+    
+
+    if (title.isNotEmpty && openingBalance > 0) {
+      final AccountModel account = AccountModel(
+        id:0,
+        title: title,
+        img: "",
+        openingBalance: openingBalance,    
+      );
+      try {
+         await AccountService().addAccounts(account);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Account added successfully!')),
+        );
+        _titleController.clear();
+        _openingBalanceController.clear();
+        setState(() {
+          _selectedAccountType = null;
+        });
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to add account. Please try again later.')),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter all details correctly')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +61,7 @@ class addaccount extends StatelessWidget {
           title: Text("Add Account"),
         ),
         body: Container(
-          //margin: EdgeInsets.only(top: 8),
+          margin: EdgeInsets.only(top: 8),
           child: Column(
             children: [
               Container(
@@ -41,6 +88,7 @@ class addaccount extends StatelessWidget {
                 margin:
                     EdgeInsets.only(bottom: 16, left: 18, right: 18, top: 24),
                 child: TextField(
+                  controller: _titleController,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     labelText: 'Account Name',
@@ -104,7 +152,7 @@ class addaccount extends StatelessWidget {
                 child: TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    labelText: 'Opening Blance',
+                    labelText: '',
                     filled: true,
                     // Adjust padding as needed
                     enabledBorder: OutlineInputBorder(
@@ -127,11 +175,11 @@ class addaccount extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(18),
                 width: double.infinity,
-                height: 50,
-                // Set the desired width here
+                height: 50,// Set the desired width here
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle the button press
+                    _addAccount;
+                   // Handle the button press
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
